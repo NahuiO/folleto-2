@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panadería Tradicional</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f9f2e7;
+            color: #2d1a0e;
+            margin: 0;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background:
+                linear-gradient(160deg, rgba(45,26,14,.92) 0%, rgba(92,51,23,.82) 45%, rgba(139,90,43,.75) 100%),
+                url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1400&q=70') center/cover no-repeat;
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .logo {
+            width: 160px;
+            margin-bottom: 20px;
+            animation: flotar 3s ease-in-out infinite;
+        }
+
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-10px); }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(246,200,122,.15);
+            border: 0.5px solid rgba(246,200,122,.4);
+            color: #f6c87a;
+            font-size: 11px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+        }
+
+        /* ── TIPOGRAFÍA ── */
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3.6rem);
+            font-weight: 700;
+            margin: 0 0 10px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            font-weight: 500;
+        }
+
+        .hero p.sub {
+            font-size: 1rem;
+            color: rgba(255,255,255,.65);
+            margin: 0 0 12px;
+            font-weight: 300;
+        }
+
+        .hero p.desc {
+            font-size: .9rem;
+            color: rgba(255,255,255,.5);
+            max-width: 480px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        /* ── BOTÓN HERO ── */
+        .btn-dorado {
+            background: #f6c87a;
+            color: #2d1a0e;
+            border: none;
+            padding: 13px 32px;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: .9rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background .2s;
+        }
+        .btn-dorado:hover { background: #fad898; color: #2d1a0e; }
+
+        /* ── SECCIONES ── */
+        .section { padding: 80px 0; }
+        .fondo   { background: #f0e3cc; }
+
+        .section-label {
+            display: block;
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: #8b5a2b;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .titulo { text-align: center; margin-bottom: 10px; }
+
+        .divider {
+            width: 48px;
+            height: 3px;
+            background: #8b5a2b;
+            border-radius: 2px;
+            margin: 0 auto 48px;
+        }
+
+        /* ── CARD VINTAGE ── */
+        .card-vintage {
+            background: #fff;
+            border: 0.5px solid rgba(139,90,43,.2);
+            border-top: 3px solid #8b5a2b;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 10px 0;
+            height: 100%;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+        .card-vintage:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 24px rgba(0,0,0,.1);
+        }
+
+        .card-vintage h4 {
+            font-size: .95rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #2d1a0e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-vintage h4 i { color: #8b5a2b; font-size: 16px; }
+
+        .card-vintage ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+        .card-vintage ul li {
+            padding: 6px 0;
+            font-size: .88rem;
+            color: #5c3317;
+            border-bottom: .5px solid rgba(139,90,43,.12);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card-vintage ul li:last-child { border-bottom: none; }
+        .card-vintage ul li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background: #8b5a2b;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ── TECH PILLS ── */
+        .tech-strip {
+            background: #fff;
+            border: 0.5px solid rgba(139,90,43,.2);
+            border-radius: 12px;
+            padding: 32px;
+        }
+
+        .tech-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .tech-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f9f2e7;
+            border: 0.5px solid rgba(139,90,43,.3);
+            border-radius: 20px;
+            padding: 7px 18px;
+            font-size: .8rem;
+            font-weight: 500;
+            color: #5c3317;
+        }
+
+        .tech-pill i { font-size: 15px; color: #8b5a2b; }
+
+        /* ── MÓDULOS ── */
+        .module-card {
+            background: #fff;
+            border: 0.5px solid rgba(139,90,43,.2);
+            border-radius: 12px;
+            overflow: hidden;
+            height: 100%;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+        .module-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 24px rgba(0,0,0,.1);
+        }
+
+        .module-header {
+            padding: 18px 22px;
+            border-bottom: 0.5px solid rgba(139,90,43,.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #fdf6ec;
+        }
+
+        .module-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: #f6c87a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2d1a0e;
+            font-size: 17px;
+            flex-shrink: 0;
+        }
+
+        .module-header h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: .95rem;
+            font-weight: 500;
+            margin: 0;
+            color: #2d1a0e;
+        }
+
+        .module-body { padding: 18px 22px; }
+
+        .module-body ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .module-body ul li {
+            font-size: .84rem;
+            color: #5c3317;
+            padding: 5px 0;
+            border-bottom: .5px solid rgba(139,90,43,.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .module-body ul li:last-child { border-bottom: none; }
+        .module-body ul li i { font-size: 13px; color: #8b5a2b; }
+
+        /* ── SEGURIDAD ── */
+        .sec-card {
+            background: #fff;
+            border: 0.5px solid rgba(139,90,43,.2);
+            border-radius: 12px;
+            padding: 28px 20px;
+            text-align: center;
+            height: 100%;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+        .sec-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 24px rgba(0,0,0,.1);
+        }
+
+        .sec-card i {
+            font-size: 32px;
+            color: #8b5a2b;
+            display: block;
+            margin-bottom: 14px;
+        }
+
+        .sec-card p {
+            font-size: .85rem;
+            color: #5c3317;
+            margin: 0;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* ── BENEFICIOS ── */
+        .benefit-card {
+            background: #fff;
+            border: 0.5px solid rgba(139,90,43,.2);
+            border-radius: 12px;
+            padding: 28px 16px;
+            text-align: center;
+            height: 100%;
+            transition: transform .3s ease;
+        }
+        .benefit-card:hover { transform: scale(1.04); }
+
+        .benefit-card i {
+            font-size: 30px;
+            color: #8b5a2b;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .benefit-card p {
+            font-size: .88rem;
+            font-weight: 500;
+            color: #2d1a0e;
+            margin: 0 0 4px;
+        }
+
+        .benefit-card span {
+            font-size: .75rem;
+            color: #8b5a2b;
+            display: block;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #2d1a0e;
+            color: rgba(255,255,255,.8);
+            text-align: center;
+            padding: 52px 20px;
+        }
+
+        footer h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: #f6c87a;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            font-size: .8rem;
+            color: rgba(255,255,255,.45);
+            margin: 4px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="container">
+            
+            <span class="hero-badge">Sistema Web</span>
+            <h1>Panadería Tradicional</h1>
+            <p class="sub">Ventas y Gestión de Inventario</p>
+            <p class="desc">
+                Tradición y tecnología para impulsar el crecimiento
+                de las panaderías modernas.
+            </p>
+            <a href="#modulos" class="btn-dorado">
+                <i class="ti ti-layout-grid"></i> Conocer sistema
+            </a>
+        </div>
+    </header>
+
+    <!-- PROBLEMÁTICA -->
+    <section class="section">
+        <div class="container">
+            <span class="section-label">El problema</span>
+            <h2 class="titulo">¿Qué resuelve este sistema?</h2>
+            <div class="divider"></div>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="card-vintage">
+                        <h4><i class="ti ti-alert-triangle"></i> Gestión manual</h4>
+                        <ul>
+                            <li>Pérdidas de inventario</li>
+                            <li>Errores administrativos</li>
+                            <li>Falta de control</li>
+                            <li>Pocas ventas digitales</li>
+                            <li>Alcance limitado de clientes</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card-vintage">
+                        <h4><i class="ti ti-check"></i> Solución</h4>
+                        <ul>
+                            <li>Plataforma web centralizada</li>
+                            <li>Control de inventario en tiempo real</li>
+                            <li>Ventas digitales con pagos integrados</li>
+                            <li>Reportes y métricas automatizadas</li>
+                            <li>Escalable y segura</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECNOLOGÍAS -->
+    <section class="section fondo">
+        <div class="container">
+            <span class="section-label">Stack tecnológico</span>
+            <h2 class="titulo">Tecnologías utilizadas</h2>
+            <div class="divider"></div>
+            <div class="tech-strip">
+                <div class="tech-pills">
+                    <span class="tech-pill"><i class="ti ti-flame"></i> CodeIgniter 4</span>
+                    <span class="tech-pill"><i class="ti ti-code"></i> PHP</span>
+                    <span class="tech-pill"><i class="ti ti-database"></i> MySQL</span>
+                    <span class="tech-pill"><i class="ti ti-layout"></i> Bootstrap</span>
+                    <span class="tech-pill"><i class="ti ti-brand-javascript"></i> JavaScript</span>
+                    <span class="tech-pill"><i class="ti ti-credit-card"></i> Mercado Pago API</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULOS -->
+    <section id="modulos" class="section">
+        <div class="container">
+            <span class="section-label">Funcionalidades</span>
+            <h2 class="titulo">Módulos del sistema</h2>
+            <div class="divider"></div>
+            <div class="row g-3">
+                <div class="col-lg-6">
+                    <div class="module-card">
+                        <div class="module-header">
+                            <div class="module-icon">
+                                <i class="ti ti-user"></i>
+                            </div>
+                            <h3>Vista usuario</h3>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li><i class="ti ti-check"></i> Catálogo de productos</li>
+                                <li><i class="ti ti-check"></i> Pan dulce</li>
+                                <li><i class="ti ti-check"></i> Pan de sal</li>
+                                <li><i class="ti ti-check"></i> Carrito de compras</li>
+                                <li><i class="ti ti-check"></i> Pagos con Mercado Pago</li>
+                                <li><i class="ti ti-check"></i> Seguimiento de pedidos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="module-card">
+                        <div class="module-header">
+                            <div class="module-icon">
+                                <i class="ti ti-settings"></i>
+                            </div>
+                            <h3>Vista administrador</h3>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li><i class="ti ti-check"></i> Dashboard</li>
+                                <li><i class="ti ti-check"></i> Ventas</li>
+                                <li><i class="ti ti-check"></i> Productos</li>
+                                <li><i class="ti ti-check"></i> Inventarios</li>
+                                <li><i class="ti ti-check"></i> Pagos</li>
+                                <li><i class="ti ti-check"></i> Usuarios</li>
+                                <li><i class="ti ti-check"></i> Catálogo</li>
+                                <li><i class="ti ti-check"></i> Reportes PDF y Excel</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEGURIDAD -->
+    <section class="section fondo">
+        <div class="container">
+            <span class="section-label">Protección</span>
+            <h2 class="titulo">Seguridad del sistema</h2>
+            <div class="divider"></div>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="sec-card">
+                        <i class="ti ti-shield-lock"></i>
+                        <p>Protección contra SQL Injection</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="sec-card">
+                        <i class="ti ti-forms"></i>
+                        <p>Validación de formularios</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="sec-card">
+                        <i class="ti ti-bug"></i>
+                        <p>Pruebas con Burp Suite</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="section">
+        <div class="container">
+            <span class="section-label">Ventajas</span>
+            <h2 class="titulo">¿Por qué digitalizar tu panadería?</h2>
+            <div class="divider"></div>
+            <div class="row g-3">
+                <div class="col-md-3 col-6">
+                    <div class="benefit-card">
+                        <i class="ti ti-trending-up"></i>
+                        <p>Más ventas</p>
+                        <span>Canal digital abierto 24/7</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="benefit-card">
+                        <i class="ti ti-world"></i>
+                        <p>Más clientes</p>
+                        <span>Mayor alcance en línea</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="benefit-card">
+                        <i class="ti ti-package"></i>
+                        <p>Mejor control</p>
+                        <span>Inventario en tiempo real</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="benefit-card">
+                        <i class="ti ti-coin"></i>
+                        <p>Mayor rentabilidad</p>
+                        <span>Menos errores, más eficiencia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <h3>Panadería Tradicional</h3>
+        <p>Sistema Web de Ventas y Gestión de Inventario</p>
+        <p>CodeIgniter 4 · Mercado Pago · MySQL</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
